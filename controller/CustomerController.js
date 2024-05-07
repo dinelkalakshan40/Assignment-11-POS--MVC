@@ -51,7 +51,6 @@ $("#customer-add-btn").on('click', () => {
 
     customers.push(customer);
     localStorage.setItem('customer', JSON.stringify(customers));
-
     loadTable();
     console.log(customers);
 
