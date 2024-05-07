@@ -103,6 +103,12 @@ $('#customer-tbl-body').on('click','tr',function () {
 
 
 });
+$('#customer-delete-btn').on('click',() => {
+    customers.splice(recordIndex,1);
+    loadTable();
+});
+
+
 document.getElementById('customer-clear-btn').addEventListener('click',function (){
     document.getElementById("customer-id").value='';
     document.getElementById("customer-name").value='';
