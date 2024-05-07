@@ -59,7 +59,7 @@ $("#customer-add-btn").on('click', () => {
     $('#customer-address').val('');
     $('#customer-salary').val('');
 
-    $("#customer-clear-btn").click();
+
 });
 $('#customer-update-btn').on('click',() => {
 
@@ -77,7 +77,7 @@ $('#customer-update-btn').on('click',() => {
     customerObj.salary = customerSalary;
 
     loadTable();
-    $('#customer-clear-btn').click();
+
 });
 
 
@@ -100,6 +100,14 @@ $('#customer-tbl-body').on('click','tr',function () {
     $('#customer-name').val(name);
     $('#customer-address').val(address);
     $('#customer-salary').val(salary);
+
+
+});
+document.getElementById('customer-clear-btn').addEventListener('click',function (){
+    document.getElementById("customer-id").value='';
+    document.getElementById("customer-name").value='';
+    document.getElementById("customer-address").value='';
+    document.getElementById("customer-salary").value='';
 });
 
 
