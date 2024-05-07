@@ -61,5 +61,25 @@ $("#customer-add-btn").on('click', () => {
 
     $("#customer-clear-btn").click();
 });
+$('#customer-tbl-body').on('click','tr',function () {
+    var index = $(this).index(); /*this will return the current cash status*/
+    recordIndex = index; /*to store the index number of the table*/
+
+    var id = $(this).find(".customer-id-value").text();
+    var name = $(this).find(".customer-name-value").text();
+    var address = $(this).find(".customer-Address-value").text();
+    var salary = $(this).find(".customer-salary-value").text();
+
+    console.log("clicked","Index :",index);
+    console.log(id);
+    console.log(name);
+    console.log(address);
+    console.log(salary);
+
+    $('#customer-id').val(id);
+    $('#customer-name').val(name);
+    $('#customer-address').val(address);
+    $('#customer-salary').val(salary);
+});
 
 
