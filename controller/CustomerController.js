@@ -61,6 +61,26 @@ $("#customer-add-btn").on('click', () => {
 
     $("#customer-clear-btn").click();
 });
+$('#customer-update-btn').on('click',() => {
+
+    var customerId = $('#customer-id').val();
+    var customerName = $('#customer-name').val();
+    var customerAddress = $('#customer-address').val();
+    var customerSalary = $('#customer-salary').val()
+
+
+    let customerObj = customers[recordIndex];
+
+    customerObj.id = customerId;
+    customerObj.name = customerName;
+    customerObj.address = customerAddress;
+    customerObj.salary = customerSalary;
+
+    loadTable();
+    $('#customer-clear-btn').click();
+});
+
+
 $('#customer-tbl-body').on('click','tr',function () {
     var index = $(this).index(); /*this will return the current cash status*/
     recordIndex = index; /*to store the index number of the table*/
