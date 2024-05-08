@@ -148,11 +148,12 @@
                             <div class="card-body">
 
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Input Customer Id Here" aria-label="" aria-describedby="basic-addon1">
+                                    <input type="text" id="search-customer-id" class="form-control" placeholder="Input Customer Id Here" aria-label="" aria-describedby="basic-addon1">
                                 </div>
 
                                 <div id="search_Customer_Name_DropDown">
-                                    <button type="button" class="btn btn-success">Search</button>
+                                    <button type="button" id="search-customer-btn" class="btn btn-success">Search</button>
+                                    <button type="button" id="customer-cancel-btn" class="btn btn-secondary">Cancel</button>
                                     <div class="container">
                                         <div id="Customer_Name_dropdown" class="dropdown">
                                         </div>
@@ -197,7 +198,7 @@
                     </div>
                     <div class="row mt-2 " id="myForm">
                         <label class="col-4 mt-2">ID</label>
-                        <input class="col-7 mt-2" type="text" id="customer-id">
+                        <input class="col-7 mt-2" type="text" id="customer-id" readonly>
 
                         <label class="col-4 mt-2">Name</label>
                         <input class="col-7 mt-2" type="text" id="customer-name">
@@ -624,6 +625,7 @@
     });
 
     $('#nav-customer').on('click', () => {
+
         $('#customer-page').css({display: 'block'});
         $('#home-page').css({display: 'none'});
         $('#item-page').css({display: 'none'});
