@@ -60,12 +60,27 @@ $('#customer-cancel-btn').click(() => {
 
 
 
+
 $("#customer-add-btn").on('click', () => {
 
     var customerId = $('#customer-id').val();
     var customerName = $('#customer-name').val();
     var customerAddress = $('#customer-address').val();
     var customerSalary = $('#customer-salary').val();
+
+    if (!/^CID-\d{6}$/.test(customerId)) {
+        alert("customer id Invalid");
+      //  $('#customerIdAlert').html("Please enter a valid customer ID in the CID-001 format (e.g., CID-01)."); // Show alert under the input field
+        return;
+    }
+    if (customerName.length < 4) {
+        alert("Customer Name Invalid.");
+        return;
+    }
+    if (customerAddress.length < 5){
+        alert("Customer Address Invalid");
+        return;
+    }
 
 
 
@@ -90,7 +105,45 @@ $("#customer-add-btn").on('click', () => {
     $('#customer-address').val('');
     $('#customer-salary').val('');
 
+    alert("Customer Saved");
+
 });
+
+$("#customer-id").focus(() => {
+    const customerId = $('#customer-id').val();
+
+    // Validate customer ID using CID-001 pattern
+    if (!/^CID-\d{6}$/.test(customerId)) {
+        $('#customerIdAlert').html("Please enter a valid ID in the format  CID-00").css("color", "red"); // Show alert in red color under the input field
+    } else {
+        $('#customerIdAlert').html("").css("color", ""); // Clear the alert message if the ID format is valid
+    }
+});
+
+$("#customer-name").focus(() => {
+    const customerName = $('#customer-name').val();
+
+
+    if (customerName.length < 4) {
+        $('#customerNameAlert').html("Name should have at least 4 characters").css("color", "red");
+    } else {
+        $('#customerNameAlert').html("").css("color", "");
+    }
+});
+
+$("#customer-address").focus(() => {
+    const customerAddress = $('#customer-address').val();
+
+
+    if (customerAddress.length < 5) {
+        $('#customerAddressAlert').html("Address should have at least 5 characters").css("color", "red");
+    } else {
+        $('#customerAddressAlert').html("").css("color", "");
+    }
+});
+
+
+
 
 $('#customer-update-btn').on('click',() => {
     var customerId = $('#customer-id').val();
