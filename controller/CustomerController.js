@@ -14,8 +14,7 @@ $(document).ready(() => {
         loadTable();
         // Load table with existing data
     }
-    /*let customerId = generateCustomerId();
-    $('#customer-id').val(customerId);*/
+
 
 });
 function loadTable() {

@@ -229,23 +229,24 @@
 <main class="container-fluid" id="item-page">
     <!--main content-->
     <section>
-        <section class="row p-2" style="height: 100%">
-            <section class="col-lg-8 col-12  bg-body" style="height: 100%">
+        <section class="row p-2" >
+            <section class="col-lg-8 col-12  bg-body" style="width: 800px">
                 <!--search Bar-->
                 <div class="input-group row mt-2 mb-1 col-md-12">
                     <div id="Item_Card" class="card-body">
                         <div class="card" >
-                            <div id="Item_Card_Header" class="card-header">
+                            <div id="Item_Card_Header" class="card-header" style="background-color: #0dbb73">
                                 Item Search
                             </div>
                             <div class="card-body">
 
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Input Item Id Here" aria-label="" aria-describedby="basic-addon1">
+                                    <input type="text" id="search-item-code" class="form-control" placeholder="Input Item Id Here" aria-label="" aria-describedby="basic-addon1">
                                 </div>
 
                                 <div id="search_Item_Name_DropDown">
-                                    <button type="button" class="btn btn-success">Search</button>
+                                    <button type="button" id="item-search-btn" class="btn btn-success">Search</button>
+                                    <button type="button" id="item-cancel-btn" class="btn btn-secondary">Cancel</button>
                                     <div class="container">
                                         <div id="Item_Name_dropdown" class="dropdown">
                                         </div>
@@ -266,66 +267,9 @@
                             <th scope="col">Qty</th>
                         </tr>
                         </thead>
-                        <tbody class="table-group-divider">
+                        <tbody class="table-group-divider" id="item-tbl-body">
                         <tr>
-                            <td>c001</td>
-                            <td>Mark</td>
-                            <td>Galle</td>
-                            <td>5000</td>
-                        </tr>
-                        <tr>
-                            <td>c002</td>
-                            <td>Mark</td>
-                            <td>Galle</td>
-                            <td>5000</td>
-                        </tr>
-                        <tr>
-                            <td>c003</td>
-                            <td>Mark</td>
-                            <td>Galle</td>
-                            <td>5000</td>
-                        </tr>
 
-                        <tr>
-                            <td>c003</td>
-                            <td>Mark</td>
-                            <td>Galle</td>
-                            <td>5000</td>
-                        </tr>
-
-                        <tr>
-                            <td>c003</td>
-                            <td>Mark</td>
-                            <td>Galle</td>
-                            <td>5000</td>
-                        </tr>
-
-                        <tr>
-                            <td>c003</td>
-                            <td>Mark</td>
-                            <td>Galle</td>
-                            <td>5000</td>
-                        </tr>
-
-                        <tr>
-                            <td>c003</td>
-                            <td>Mark</td>
-                            <td>Galle</td>
-                            <td>5000</td>
-                        </tr>
-
-                        <tr>
-                            <td>c003</td>
-                            <td>Mark</td>
-                            <td>Galle</td>
-                            <td>5000</td>
-                        </tr>
-
-                        <tr>
-                            <td>c003</td>
-                            <td>Mark</td>
-                            <td>Galle</td>
-                            <td>5000</td>
                         </tr>
 
                         </tbody>
@@ -333,8 +277,8 @@
                 </div>
             </section>
 
-            <!--Manage Customer-->
-            <section class="col-lg-4 col-12 vh-75 bg-body">
+            <!--Manage item-->
+            <section class="col-lg-4 col-12 vh-75 bg-body" style="width: 600px">
                 <div class="text-center mt-2 p-1" style="background-color: #269145 ; color:white;">
                     <i class="fa-solid fa-user" style="color: #ffffff;"></i>
                     Manage Item
@@ -345,22 +289,26 @@
                     </div>
                     <div class="row mt-2 ">
                         <label class="col-4 mt-2">Code</label>
-                        <input class="col-7 mt-2">
+                        <input class="col-7 mt-2" id="item-code" type="text">
+                        <div id="itemCodeAlert"></div>
 
                         <label class="col-4 mt-2">Name</label>
-                        <input class="col-7 mt-2">
+                        <input class="col-7 mt-2" id="item-name" type="text">
+                        <div id="itemNameAlert"></div>
 
                         <label class="col-4 mt-2">Price</label>
-                        <input class="col-7 mt-2">
+                        <input class="col-7 mt-2" id="item-price" type="text">
+                        <div id="itemPriceAlert"></div>
 
                         <label class="col-4 mt-2">Qty</label>
-                        <input class="col-7 mt-2">
+                        <input class="col-7 mt-2" id="item-qty" type="text">
+                        <div id="itemQtyAlert"></div>
                     </div>
                     <div class="mt-2 text-end" style="width: 100%">
-                        <button class="btn btn-primary" type="button">Add</button>
-                        <button class="btn btn-secondary" type="button">Update</button>
-                        <button class="btn btn-danger" type="button">Delete</button>
-                        <button class="btn btn-success" type="button">clear</button>
+                        <button class="btn btn-primary" id="item-add-btn" type="button">Add</button>
+                        <button class="btn btn-secondary" id="item-update-btn" type="button">Update</button>
+                        <button class="btn btn-danger" id="item-delete-btn" type="button">Delete</button>
+                        <button class="btn btn-success" id="item-clear-btn" type="button">clear</button>
                     </div>
                 </div>
             </section>
@@ -612,6 +560,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 <script type="module" src="controller/CustomerController.js"></script>
+<script type="module" src="controller/ItemController.js"></script>
 <script>
     $("#header").css({display:"block"});
     $("#home-page").css({display:"block"});
