@@ -21,15 +21,39 @@ function loadTable() {
 
     items.map((item, index) => {
         let record = `<tr>
-                <td class="item-id-value">${item.Code}</td>
+                <td class="item-code-value">${item.Code}</td>
                 <td class="item-name-value">${item.Name}</td>
-                <td class="item-Address-value">${item.Price}</td>
-                <td class="item-salary-value">${item.Qty}</td>
+                <td class="item-price-value">${item.Price}</td>
+                <td class="item-qty-value">${item.Qty}</td>
                 
             </tr>`;
         $("#item-tbl-body").append(record);
     });
 }
+
+$('#item-search-btn').click(() => {
+    const itemCode = $('#search-item-code').val(); // Assuming your input field has id "search-customer-id"
+    const foundItem = items.find(item => item.Code === itemCode);
+
+    if (foundItem) {
+        $("#item-tbl-body").empty(); // Clear existing table
+        let record = `<tr>
+            <td class="item-code-value">${foundItem.Code}</td>
+            <td class="item-name-value">${foundItem.Name}</td>
+            <td class="item-price-value">${foundItem.Price}</td>
+            <td class="item-qty-value">${foundItem.Qty}</td>
+        </tr>`;
+        $("#item-tbl-body").append(record); // Append the found customer to the table
+    } else {
+        alert("Item not found!"); // Show an alert if customer not found
+    }
+});
+
+$('#item-cancel-btn').click(() => {
+    loadTable();
+});
+
+
 $('#item-add-btn').on('click',()=> {
     var itemCode =$('#item-code').val();
     var itemName =$('#item-name').val();
@@ -115,3 +139,4 @@ $("#item-qty").focus(() => {
         $('#itemQtyAlert').html("").css("color", "");
     }
 });
+
