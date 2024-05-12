@@ -68,7 +68,7 @@ $("#customer-add-btn").on('click', () => {
     var customerAddress = $('#customer-address').val();
     var customerSalary = $('#customer-salary').val();
 
-    if (!/^CID-\d{6}$/.test(customerId)) {
+    if (!/^CID-00\d*$/.test(customerId)) {
         alert("customer id Invalid");
       //  $('#customerIdAlert').html("Please enter a valid customer ID in the CID-001 format (e.g., CID-01)."); // Show alert under the input field
         return;
@@ -79,6 +79,10 @@ $("#customer-add-btn").on('click', () => {
     }
     if (customerAddress.length < 5){
         alert("Customer Address Invalid");
+        return;
+    }
+    if (!/^\d{4,5}\.00$/.test(customerSalary)) {
+        alert("Customer Salary Invalid. It should be in the format of 4 or 5 digits followed by '.00'.");
         return;
     }
 
@@ -142,6 +146,19 @@ $("#customer-address").focus(() => {
     }
 });
 
+$("#customer-salary").focus(() => {
+    const customerSalary = $('#customer-salary').val();
+
+
+    if (!/^\d{4,5}\.00$/.test(customerSalary))  {
+        $('#customerSalaryAlert').html("Customer Salary format of 4 or 5 digits followed by '.00'.").css("color", "red");
+    } else {
+        $('#customerSalaryAlert').html("").css("color", "");
+    }
+});
+
+
+
 
 
 
@@ -163,6 +180,14 @@ $('#customer-update-btn').on('click',() => {
 
     localStorage.setItem('customer', JSON.stringify(customers));
     loadTable();
+
+    $('#customer-id').val('');
+    $('#customer-name').val('');
+    $('#customer-address').val('');
+    $('#customer-salary').val('');
+
+    alert("Customer updated");
+
 
 });
 
@@ -189,15 +214,7 @@ $('#customer-tbl-body').on('click','tr',function () {
 
 
 });
-/*$('#customer-delete-btn').on('click',() => {
-    customers.splice(recordIndex,1);
 
-    loadTable();
-
-    $('#customer-name').val('');
-    $('#customer-address').val('');
-    $('#customer-salary').val('');
-});*/
 
 
 $('#customer-delete-btn').on('click', (event) => {
@@ -215,6 +232,7 @@ $('#customer-delete-btn').on('click', (event) => {
         $('#customer-name').val('');
         $('#customer-address').val('');
         $('#customer-salary').val('');
+        alert("Customer deleted");
     } else {
         console.error('Invalid recordIndex or customers array.');
     }
