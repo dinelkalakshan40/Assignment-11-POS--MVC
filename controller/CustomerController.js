@@ -110,6 +110,7 @@ $("#customer-add-btn").on('click', () => {
 
     alert("Customer Saved");
 
+
 });
 
 $("#customer-id").focus(() => {
@@ -238,7 +239,7 @@ $('#customer-delete-btn').on('click', (event) => {
 });
 
 
-
+/*clear action*/
 document.getElementById('customer-clear-btn').addEventListener('click',function (){
 
     document.getElementById("customer-id").value='';

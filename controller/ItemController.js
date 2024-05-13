@@ -140,3 +140,80 @@ $("#item-qty").focus(() => {
     }
 });
 
+$('#item-update-btn').on('click',() => {
+    var itemId = $('#item-code').val();
+    var itemName = $('#item-name').val();
+    var itemPrice = $('#item-price').val();
+    var itemQty = $('#item-qty').val()
+
+
+
+    let itemObj = items[recordIndex];
+
+    itemObj.Code = itemId;
+    itemObj.Name = itemName;
+    itemObj.Price = itemPrice;
+    itemObj.Qty = itemQty;
+
+
+    localStorage.setItem('item', JSON.stringify(items));
+    loadTable();
+
+    $('#item-code').val('');
+    $('#item-name').val('');
+    $('#item-price').val('');
+    $('#item-qty').val('');
+
+    alert("Item updated");
+
+
+});
+
+$('#item-tbl-body').on('click','tr',function () {
+    var index = $(this).index(); /*this will return the current cash status*/
+    recordIndex = index; /*to store the index number of the table*/
+
+    var Code = $(this).find(".item-code-value").text();
+    var Name = $(this).find(".item-name-value").text();
+    var Price = $(this).find(".item-price-value").text();
+    var Qty = $(this).find(".item-qty-value").text();
+
+    console.log("clicked","Index :",index);
+
+    $('#item-code').val(Code);
+    $('#item-name').val(Name);
+    $('#item-price').val(Price);
+    $('#item-qty').val(Qty);
+
+
+});
+
+$('#item-delete-btn').on('click', (event) => {
+    event.preventDefault(); // Prevent default form submission or button behavior
+
+    if (recordIndex >= 0 && recordIndex < items.length) {
+        items.splice(recordIndex, 1);
+
+        localStorage.setItem('item', JSON.stringify(items));
+
+
+        loadTable(); // Reload the table data after deletion
+
+        $('#item-code').val('');
+        $('#item-name').val('');
+        $('#item-price').val('');
+        $('#item-qty').val('');
+
+        alert("Item deleted");
+    } else {
+        console.error('Invalid recordIndex or error.');
+    }
+});
+
+document.getElementById('item-clear-btn').addEventListener('click',function (){
+
+    document.getElementById("item-code").value='';
+    document.getElementById("item-name").value='';
+    document.getElementById("item-price").value='';
+    document.getElementById("item-qty").value='';
+});
