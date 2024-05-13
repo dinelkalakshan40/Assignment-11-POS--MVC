@@ -325,19 +325,24 @@
             <!--Order id date-->
             <div class="col-lg-3 col-12 bg-body">
                 <div class="container row text-body-tertiary ">
-                    <label class="col-6" style="color: black">Order ID: </label>
-                    <label class="col-6" style="color: black">O001</label>
-                    <label class="col-6" style="color: black">Date: </label>
-                    <label class="col-6" style="color: black">2022/02/02</label>
+                    <label class="col-6" style="color: black;font-weight: bold">Order ID: </label>
+                    <input type="text" class="col-6" placeholder="" style="margin-bottom: 20px">
+                    <label class="col-6" style="color: black;font-weight: bold">Date: </label>
+                    <input type="date" class="col-6">
                 </div>
+                <br>
 
                 <!-- customer Details-->
                 <div class="container text-body-secondary border border-3 p-1 ">
-                    <div class="text-center  p-1 " style="background-color: #2dbd6e ; color:white; font-size: 20px;">
+                    <div class="text-center  p-1 " style="background-color: #2d8bbd ; color:white; font-size: 20px;">
                         Customer Details
                     </div>
 
-                    <label class="col-4 mt-2">ID</label>
+                    <label class="col-4 mt-2" >Customer</label>
+                    <select class="form-select col-7 mt-2"  style="width: 60%" aria-label="Default select example"></select>
+
+
+                    <label class="col-4 mt-2">Customer-ID</label>
                     <input class="col-7 mt-2">
 
                     <label class="col-4 mt-2">Name</label>
@@ -345,6 +350,7 @@
 
                     <label class="col-4 mt-2">Address</label>
                     <input class="col-7 mt-2">
+
                     <label class="col-4 mt-2">Salary</label>
                     <input class="col-7 mt-2">
 
@@ -354,50 +360,53 @@
             <!--Item Details-->
             <div class=" col-lg-5  col-12 bg-body">
                 <div class="container text-body-secondary border border-3 p-1">
-                    <div class="text-center  p-1" style="background-color:#2dbd6e  ; color:white;font-size: 20px;">
+                    <div class="text-center  p-1" style="background-color:#a94188  ; color:white;font-size: 20px;">
                         Item Details
                     </div>
 
                     <div class="row">
                         <div class="col-md-6 col-12">
-                            <label class="col-4 mt-2">Code</label>
-                            <input class="col-7 mt-2">
+                            <label class="col-4 mt-2">Item</label>
+                            <select class="form-select col-7 mt-2"  style="width: 60%" aria-label="Default select example"></select>
 
                             <label class="col-4 mt-2">Name</label>
                             <input class="col-7 mt-2">
 
-                            <label class="col-4 mt-2">Order Qty</label>
+                            <label class="col-4 mt-2">QtyOnHand</label>
                             <input class="col-7 mt-2">
                         </div>
 
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12"><br><br><br>
+                            <label class="col-4 mt-2">ItemCode</label>
+                            <input class="col-7 mt-2">
+
                             <label class="col-4 mt-2">Price</label>
                             <input class="col-7 mt-2">
 
-                            <label class="col-4 mt-2">Qty</label>
-                            <input class="col-7 mt-2">
-
-                            <label class="col-4 mt-2">Total</label>
+                            <label class="col-4 mt-2">Order-Qty</label>
                             <input class="col-7 mt-2">
                         </div>
                     </div>
 
 
                     <div class="text-end mt-3">
-                        <button class="btn btn-danger" style="background-color:#0dbb73;border-color:white;">
-                            <i class="fa fa-times"  style="color: #ffffff;" ></i>
-                        </button>
-                        <button class="btn btn-primary" style="background-color:#0dbb73;border-color:white;" >
+                        <button class="btn btn-primary" style="background-color:#a94188;border-color:white;" >
                             <i class="fa fa-plus-circle" style="color: #ffffff;"></i> &nbsp;
                             Add
                         </button>
+                        <button class="btn btn-danger" style="background-color:#a94188;border-color:white;">
+                            <i class="fa fa-times"  style="color: #ffffff;" ></i>
+                            Cancel
+                        </button>
+
                     </div>
                 </div>
             </div>
 
+            <!--Place order form-->
             <div class=" col-lg-4  col-12 bg-body">
                 <div class="container text-body-secondary border border-3 p-1">
-                    <div class="text-center  p-1" style="background-color:#2dbd6e  ; color:white;font-size: 20px;">
+                    <div class="text-center  p-1" style="background-color:#468585  ; color:white;font-size: 20px;">
                         Place Order
                     </div>
 
@@ -423,7 +432,7 @@
 
 
                     <div class="text-end mt-3">
-                        <button class="btn btn-primary" style="background-color:#0dbb73;border-color:white;" >
+                        <button class="btn btn-primary" style="background-color:#468585 ;border-color:white;" >
                             <i class="fa fa-cart-plus" style="color: #ffffff;"></i> &nbsp;
                             Place Order
                         </button>
@@ -437,12 +446,12 @@
             <div class="col-12 bg-body ">
                 <div class="table-responsive mt-2">
                     <table class="table table-hover">
-                        <thead class="table-info">
+                        <thead class="table-info" >
                         <tr>
                             <th scope="col">Item Code</th>
                             <th scope="col">Item Name</th>
                             <th scope="col">Price</th>
-                            <th scope="col">Qty</th>
+                            <th scope="col">Quantity</th>
                             <th scope="col">Total</th>
                         </tr>
                         </thead>
@@ -453,13 +462,6 @@
                             <td>140.00</td>
                             <td>2</td>
                             <td>280.00</td>
-                        </tr>
-                        <tr>
-                            <td>I002</td>
-                            <td>Maagee</td>
-                            <td>200.00</td>
-                            <td>2</td>
-                            <td>400.00</td>
                         </tr>
                         </tbody>
                     </table>
