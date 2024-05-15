@@ -338,21 +338,25 @@
                         Customer Details
                     </div>
 
-                    <label class="col-4 mt-2" >Customer</label>
-                    <select class="form-select col-7 mt-2"  style="width: 60%" aria-label="Default select example"></select>
+                    <label class="col-4 mt-2" for="customer-select" >Customer</label>
+                    <select id="customer-select" class="form-select col-7 mt-2 customer-id-value"  style="width: 60%" aria-label="Default select example">
+
+                        <option value="1"></option>
+
+                    </select>
 
 
                     <label class="col-4 mt-2">Customer-ID</label>
-                    <input class="col-7 mt-2">
+                    <input class="col-7 mt-2" id="customerIdOrder">
 
                     <label class="col-4 mt-2">Name</label>
-                    <input class="col-7 mt-2">
+                    <input class="col-7 mt-2" id="customerNameOrder">
 
                     <label class="col-4 mt-2">Address</label>
-                    <input class="col-7 mt-2">
+                    <input class="col-7 mt-2" id="customerAddressOrder">
 
                     <label class="col-4 mt-2">Salary</label>
-                    <input class="col-7 mt-2">
+                    <input class="col-7 mt-2" id="customerSalaryOrder">
 
                 </div>
             </div>
@@ -367,31 +371,31 @@
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <label class="col-4 mt-2">Item</label>
-                            <select class="form-select col-7 mt-2"  style="width: 60%" aria-label="Default select example"></select>
+                            <select id="item-select" class="form-select col-7 mt-2"  style="width: 60%" aria-label="Default select example"></select>
 
                             <label class="col-4 mt-2">Name</label>
-                            <input class="col-7 mt-2">
+                            <input class="col-7 mt-2" id="itemNameOrder">
 
                             <label class="col-4 mt-2">QtyOnHand</label>
-                            <input class="col-7 mt-2">
+                            <input class="col-7 mt-2" id="itemQtyOrder">
                         </div>
 
                         <div class="col-md-6 col-12"><br><br><br>
                             <label class="col-4 mt-2">ItemCode</label>
-                            <input class="col-7 mt-2">
+                            <input class="col-7 mt-2" id="itemCodeOrder">
 
                             <label class="col-4 mt-2">Price</label>
-                            <input class="col-7 mt-2">
+                            <input class="col-7 mt-2" id="itemPriceOrder">
 
                             <label class="col-4 mt-2">Order-Qty</label>
-                            <input class="col-7 mt-2">
+                            <input class="col-7 mt-2" id="OrderQty">
                         </div>
                     </div>
 
 
                     <div class="text-end mt-3">
                         <button class="btn btn-primary" style="background-color:#a94188;border-color:white;" >
-                            <i class="fa fa-plus-circle" style="color: #ffffff;"></i> &nbsp;
+                            <i class="fa fa-plus-circle" id="AddCartBtn" style="color: #ffffff;"></i> &nbsp;
                             Add
                         </button>
                         <button class="btn btn-danger" style="background-color:#a94188;border-color:white;">
@@ -417,23 +421,23 @@
 
                         <div class="col-md-8 col-12">
                             <label class="col-4 mt-2">Total</label>
-                            <input class="col-7 mt-2">
+                            <input class="col-7 mt-2" id="total">
 
                             <label class="col-4 mt-2">Discount</label>
-                            <input class="col-7 mt-2">
+                            <input class="col-7 mt-2" id="discount">
 
                             <label class="col-4 mt-2">Cash</label>
-                            <input class="col-7 mt-2">
+                            <input class="col-7 mt-2" id="cash">
 
                             <label class="col-4 mt-2">Net Total</label>
-                            <input class="col-7 mt-2">
+                            <input class="col-7 mt-2" id="net-total">
                         </div>
                     </div>
 
 
                     <div class="text-end mt-3">
                         <button class="btn btn-primary" style="background-color:#468585 ;border-color:white;" >
-                            <i class="fa fa-cart-plus" style="color: #ffffff;"></i> &nbsp;
+                            <i class="fa fa-cart-plus" id="placeOrderBtn" style="color: #ffffff;"></i> &nbsp;
                             Place Order
                         </button>
                     </div>
@@ -563,6 +567,7 @@
 
 <script type="module" src="controller/CustomerController.js"></script>
 <script type="module" src="controller/ItemController.js"></script>
+<script type="module" src="controller/PlaceOrderController.js"></script>
 <script>
     $("#header").css({display:"block"});
     $("#home-page").css({display:"block"});
