@@ -9,6 +9,8 @@ const loadCustomerData = () =>{
     $("#customer-tbl-body").empty();
     $("#customer-select").empty();
 
+
+
     customers.forEach(customer=> {
         let record = `<tr>
         <td class='customer-id-value' data-customer-id="${customer.id}">${customer.id}</td>
@@ -18,14 +20,12 @@ const loadCustomerData = () =>{
         </tr>`;
         $("#customer-tbl-body").append(record);
 
+
         $("#customer-select").append(`<option value="${customer.id}">${customer.id}</option>`);
+
     });
 
-    $(".customer-id-value").click(function() {
-            console.log("Clicked customer ID in dropdown");
-            const clickedCustomerId = $(this).data("customer-id");
-            $("#customer-select").val(clickedCustomerId).change(); // Trigger change event
-    });
+    $("#customer-select").val($("#customerIdOrder").val()); // Set selected value based on customerIdOrder
 
 };
 
@@ -45,7 +45,7 @@ $(document).ready(() => {
             console.error(`Customer with ID ${selectedCustomerId} not found.`);
             // Handle the error appropriately (e.g., display a message to the user)
         }
-      // selectedOption.text(selectedCustomerId);
+       //selectedOption.text(selectedCustomerId);
 
     });
 
@@ -58,6 +58,11 @@ $(document).ready(() => {
         $("#customer-select").val(showId);
         loadCustomerData();
     });
+    const defaultCustomerId = customers.length > 0 ? customers[0].id : null;
+    if (defaultCustomerId) {
+        $("#customer-select").val(defaultCustomerId);
+    }
+
 });
 
 

@@ -340,11 +340,12 @@
 
                     <label class="col-4 mt-2" for="customer-select" >Customer</label>
                     <select id="customer-select" class="form-select col-7 mt-2 customer-id-value"  style="width: 60%" aria-label="Default select example">
-
-                        <option value="1"></option>
-
+                        <optgroup label="Select a customer">
+                            <option value="1"></option>
+                        </optgroup>
+                       <!-- <option selected>Open this select menu</option>-->
+                        <!--<option value="1"></option>-->
                     </select>
-
 
                     <label class="col-4 mt-2">Customer-ID</label>
                     <input class="col-7 mt-2" id="customerIdOrder">
@@ -371,7 +372,10 @@
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <label class="col-4 mt-2">Item</label>
-                            <select id="item-select" class="form-select col-7 mt-2"  style="width: 60%" aria-label="Default select example"></select>
+                            <select id="item-select" class="form-select col-7 mt-2"  style="width: 60%" aria-label="Default select example">
+                                <option selected>Open this select menu</option>
+
+                            </select>
 
                             <label class="col-4 mt-2">Name</label>
                             <input class="col-7 mt-2" id="itemNameOrder">
