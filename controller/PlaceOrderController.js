@@ -45,7 +45,7 @@ $(document).ready(() => {
             console.error(`Customer with ID ${selectedCustomerId} not found.`);
             // Handle the error appropriately (e.g., display a message to the user)
         }
-       //selectedOption.text(selectedCustomerId);
+
 
     });
 
@@ -64,6 +64,65 @@ $(document).ready(() => {
     }
 
 });
+/*================================================================================================*/
+
+const loadItemData = () =>{
+    $("#item-tbl-body").empty();
+    $("#item-select").empty();
 
 
+
+    items.forEach(item=> {
+        let record = `<tr>
+        <td class='item-code-value' data-item-Code="${item.Code}">${item.Code}</td>
+        <td class='item-name-value'>${item.Name}</td>
+        <td class='item-price-value'>${item.Price}</td>
+        <td class='item-qty-value'>${item.Qty}</td>
+        </tr>`;
+        $("#item-tbl-body").append(record);
+
+
+        $("#item-select").append(`<option value="${item.Code}">${item.Code}</option>`);
+
+    });
+
+    $("#item-select").val($("#itemCodeOrder").val()); // Set selected value based on customerIdOrder
+
+};
+
+$(document).ready(() => {
+    loadItemData();
+
+    $("#item-select").change(() => {
+        const selectedItemCode = $("#item-select").val();
+        const selectedItem = items.find(item => item.Code == selectedItemCode);
+        if (selectedItem) {
+            $("#itemCodeOrder").val(selectedItem.Code);
+            $("#itemNameOrder").val(selectedItem.Name);
+            $("#itemPriceOrder").val(selectedItem.Price);
+            $("#itemQtyOrder").val(selectedItem.Qty);
+
+        } else {
+            console.error(`Item with code ${selectedItemCode} not found.`);
+            // Handle the error appropriately (e.g., display a message to the user)
+        }
+
+
+    });
+
+    const displayedItemCode = $("#itemCodeOrder").val();
+    $("#item-select").val(displayedItemCode);
+
+    // Show all customer IDs when clicking the select dropdown
+    $("#item-select").click(() => {
+        const showCode=$("#itemCodeOrder").val();
+        $("#item-select").val(showCode);
+        loadItemData();
+    });
+    const defaultItemCode = items.length > 0 ? items[0].Code : null;
+    if (defaultItemCode) {
+        $("#item-select").val(defaultItemCode);
+    }
+
+});
 
