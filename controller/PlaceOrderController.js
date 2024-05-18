@@ -16,6 +16,9 @@ $(document).ready(()=>{
 
     const initialOrderId = generateOrderId();
     $("#orderId").val(initialOrderId);
+
+    loadCustomerData();
+    loadItemData();
 });
 
 const generateOrderId = () => {
@@ -30,6 +33,20 @@ const generateOrderId = () => {
     const orderId = `OID-${String(orderCounter).padStart(3, '0')}`;
     return orderId;
 };
+const calculateTotal = () => {
+    const itemPrice = parseFloat($("#itemPriceOrder").val()) || 0;
+    const orderQty = parseInt($("#OrderQty").val()) || 0;
+    const total = itemPrice * orderQty;
+   // $("#total").val(total.toFixed(2));
+    return total;
+};
+
+const updateTotal=()=>{
+    const currentTotal = parseFloat($("#total").val()) || 0;
+    const newItemTotal = calculateTotal();
+    const updatedTotal = currentTotal + newItemTotal;
+    $("#total").val(updatedTotal.toFixed(2));
+}
 
 
 const loadCustomerData = () =>{
@@ -56,8 +73,34 @@ const loadCustomerData = () =>{
 
 };
 
+/*$(document).ready(() => {
+
+});*/
+const loadItemData = () =>{
+    $("#item-tbl-body").empty();
+    $("#item-select").empty();
+
+    items.forEach(item=> {
+        let record = `<tr>
+        <td class='item-code-value' data-item-Code="${item.Code}">${item.Code}</td>
+        <td class='item-name-value'>${item.Name}</td>
+        <td class='item-price-value'>${item.Price}</td>
+        <td class='item-qty-value'>${item.Qty}</td>
+        </tr>`;
+        $("#item-tbl-body").append(record);
+
+
+        $("#item-select").append(`<option value="${item.Code}">${item.Code}</option>`);
+
+    });
+
+    $("#item-select").val($("#itemCodeOrder").val()); // Set selected value based on customerIdOrder
+
+};
+
 $(document).ready(() => {
     loadCustomerData();
+    loadItemData();
 
     $("#customer-select").change(() => {
         const selectedCustomerId = $("#customer-select").val();
@@ -90,35 +133,6 @@ $(document).ready(() => {
         $("#customer-select").val(defaultCustomerId);
     }
 
-});
-/*================================================================================================*/
-
-const loadItemData = () =>{
-    $("#item-tbl-body").empty();
-    $("#item-select").empty();
-
-
-
-    items.forEach(item=> {
-        let record = `<tr>
-        <td class='item-code-value' data-item-Code="${item.Code}">${item.Code}</td>
-        <td class='item-name-value'>${item.Name}</td>
-        <td class='item-price-value'>${item.Price}</td>
-        <td class='item-qty-value'>${item.Qty}</td>
-        </tr>`;
-        $("#item-tbl-body").append(record);
-
-
-        $("#item-select").append(`<option value="${item.Code}">${item.Code}</option>`);
-
-    });
-
-    $("#item-select").val($("#itemCodeOrder").val()); // Set selected value based on customerIdOrder
-
-};
-
-$(document).ready(() => {
-    loadItemData();
 
     $("#item-select").change(() => {
         const selectedItemCode = $("#item-select").val();
@@ -133,8 +147,6 @@ $(document).ready(() => {
             console.error(`Item with code ${selectedItemCode} not found.`);
             // Handle the error appropriately (e.g., display a message to the user)
         }
-
-
     });
 
     const displayedItemCode = $("#itemCodeOrder").val();
@@ -160,6 +172,12 @@ $(document).ready(() => {
             $("#OrderQty").val(availableQty); // Reset to maximum available quantity
 
         }
+        /*calculateTotal();*/
+    });
+
+    $("#AddCartBtn").click(() => {
+        //calculateTotal(); // Recalculate total when Add to Cart button is clicked
+        updateTotal();
     });
 
     // Generate a new order ID when the "Place Order" button is clicked
@@ -169,5 +187,8 @@ $(document).ready(() => {
         // Add your order placement logic here
     });
 
+    calculateTotal();
+
 });
+
 
