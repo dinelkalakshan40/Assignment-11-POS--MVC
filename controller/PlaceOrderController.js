@@ -1,6 +1,7 @@
 import {customers,items,Orders} from "/db/Db.js";
 
 import {PlaceOrderModel} from "/model/PlaceOrderModel.js";
+import { OrderHistoryModel } from "/model/OrderHistoryModel.js";
 
 let CustomerIndexElement;
 let ItemIndexElement;
@@ -231,6 +232,17 @@ $(document).ready(() => {
 
     // Generate a new order ID when the "Place Order" button is clicked
     $("#placeOrderBtn").click(() => {
+        const orderId = $("#orderId").val();
+        const orderDate = $("#orderDate").val();
+        const customerId = $("#customerIdOrder").val();
+        const customerName = $("#customerNameOrder").val();
+        const itemCode = $("#itemCodeOrder").val();
+        const itemName = $("#itemNameOrder").val();
+
+        const orderHistory = new OrderHistoryModel(orderId, orderDate, customerName, customerId, itemCode, itemName);
+        appendOrderHistory(orderHistory);
+
+
         const newOrderId = generateOrderId();
         $("#orderId").val(newOrderId);
         clearAllInputs();
@@ -287,6 +299,21 @@ const addItemToCart = (order) => {
     $("#cart-tbl-body").append(cartRow);
 };
 $("#net-total").val('0.00');
+
+
+const appendOrderHistory = (orderHistory) => {
+    const historyRow = `
+        <tr>
+            <td>${orderHistory.orderId}</td>
+            <td>${orderHistory.orderDate}</td>
+            <td>${orderHistory.customerId}</td>
+            <td>${orderHistory.customerName}</td>
+            <td>${orderHistory.itemCode}</td>
+            <td>${orderHistory.itemName}</td>
+        </tr>
+    `;
+    $("#history-tbl-body").append(historyRow);
+};
 
 
 

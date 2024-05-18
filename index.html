@@ -479,77 +479,21 @@
     <div class="container d-flex justify-content-center mt-5">
 
         <div class="table-responsive " style="width: 100%">
-            <table class="table table-hover">
-                <thead class="table-info">
+            <table class="table table-hover" id="history-tbl" style="border: 2px solid #2d8bbd">
+                <thead class="table-info" id="orderHistoryHead" style="background-color: #26ec99">
                 <tr>
                     <th scope="col">Order-ID</th>
                     <th scope="col">Date</th>
                     <th scope="col">CustomerID</th>
+                    <th scope="col">CustomerName</th>
                     <th scope="col">Item-Code</th>
+                    <th scope="col">Item-Name</th>
                 </tr>
                 </thead>
-                <tbody class="table-group-divider">
+                <tbody class="table-group-divider" id="history-tbl-body">
                 <tr>
-                    <td>c001</td>
-                    <td>Mark</td>
-                    <td>Galle</td>
-                    <td>5000</td>
-                </tr>
-                <tr>
-                    <td>c002</td>
-                    <td>Mark</td>
-                    <td>Galle</td>
-                    <td>5000</td>
-                </tr>
-                <tr>
-                    <td>c003</td>
-                    <td>Mark</td>
-                    <td>Galle</td>
-                    <td>5000</td>
-                </tr>
 
-                <tr>
-                    <td>c003</td>
-                    <td>Mark</td>
-                    <td>Galle</td>
-                    <td>5000</td>
                 </tr>
-
-                <tr>
-                    <td>c003</td>
-                    <td>Mark</td>
-                    <td>Galle</td>
-                    <td>5000</td>
-                </tr>
-
-                <tr>
-                    <td>c003</td>
-                    <td>Mark</td>
-                    <td>Galle</td>
-                    <td>5000</td>
-                </tr>
-
-                <tr>
-                    <td>c003</td>
-                    <td>Mark</td>
-                    <td>Galle</td>
-                    <td>5000</td>
-                </tr>
-
-                <tr>
-                    <td>c003</td>
-                    <td>Mark</td>
-                    <td>Galle</td>
-                    <td>5000</td>
-                </tr>
-
-                <tr>
-                    <td>c003</td>
-                    <td>Mark</td>
-                    <td>Galle</td>
-                    <td>5000</td>
-                </tr>
-
                 </tbody>
             </table>
         </div>
@@ -565,6 +509,7 @@
 <script type="module" src="controller/CustomerController.js"></script>
 <script type="module" src="controller/ItemController.js"></script>
 <script type="module" src="controller/PlaceOrderController.js"></script>
+
 <script>
     $("#header").css({display:"block"});
     $("#home-page").css({display:"block"});
