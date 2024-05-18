@@ -186,7 +186,11 @@ $(document).ready(() => {
 
     $("#AddCartBtn").click(() => {
         const selectedItemCode = $("#itemCodeOrder").val();
+        const selectedItemName = $("#itemNameOrder").val();
+        const selectedItemPrice = parseFloat($("#itemPriceOrder").val());
         const orderQty = parseInt($("#OrderQty").val());
+        const itemTotal = calculateTotal();
+
 
         const selectedItem = items.find(item => item.Code == selectedItemCode);
         if (selectedItem) {
@@ -195,6 +199,21 @@ $(document).ready(() => {
                 updateItemDataInUI(selectedItemCode, selectedItem.Qty); // Update the UI
                 $("#itemQtyOrder").val(selectedItem.Qty); // Update the Qty field in the form
                 updateTotal(); // Update total when Add to Cart button is clicked
+
+                const order=new PlaceOrderModel(
+                    $("#orderId").val(),
+                    $("#orderDate").val(),
+                    $("#customerIdOrder").val(),
+                    $("#customerNameOrder").val(),
+                    $("#customerAddressOrder").val(),
+                    $("#customerSalaryOrder").val(),
+                    selectedItemCode,
+                    selectedItemName,
+                    selectedItemPrice,
+                    orderQty,
+                    itemTotal
+                );
+                    addItemToCart(order);
             } else {
                 alert('Order quantity exceeds available quantity!');
             }
@@ -217,6 +236,18 @@ const updateItemDataInUI = (itemCode, newQty) => {
     if (itemSelectOption.length > 0) {
         itemSelectOption.text(`${itemCode} `);
     }
+};
+const addItemToCart = (order) => {
+    const cartRow = `
+        <tr>
+            <td>${order.ItemCode}</td>
+            <td>${order.ItemName}</td>
+            <td>${order.ItemPrice.toFixed(2)}</td>
+            <td>${order.ItemQty}</td>
+            <td>${order.total.toFixed(2)}</td>
+        </tr>
+    `;
+    $("#cart-tbl-body").append(cartRow);
 };
 
 

@@ -1,9 +1,9 @@
 export class PlaceOrderModel{
-        constructor(id,name,address,salary) {
+        constructor(oid,orderDate,CustomerId,CustomerName,CustomerAddress,CustomerSalary,ItemCode,ItemName,ItemPrice,ItemQty,total) {
                 this._oid=oid;
                 this._orderDate=orderDate;
+                this._CustomerName = CustomerName;
                 this._CustomerID = CustomerId;
-                this._customerName = customerName;
                 this._CustomerAddress = CustomerAddress;
                 this._CustomerSalary = CustomerSalary;
                 this._ItemCode=ItemCode;
@@ -11,8 +11,10 @@ export class PlaceOrderModel{
                 this._ItemPrice=ItemPrice;
                 this._ItemQty=ItemQty;
                 this._total=total;
+                this._CustomerId = CustomerId;
 
         }
+
 
         get oid() {
                 return this._oid;
@@ -30,20 +32,20 @@ export class PlaceOrderModel{
                 this._orderDate = value;
         }
 
-        get CustomerID() {
-                return this._CustomerID;
+        get CustomerId() {
+                return this._CustomerId;
         }
 
-        set CustomerID(value) {
-                this._CustomerID = value;
+        set CustomerId(value) {
+                this._CustomerId = value;
         }
 
-        get customerName() {
-                return this._customerName;
+        get CustomerName() {
+                return this._CustomerName;
         }
 
-        set customerName(value) {
-                this._customerName = value;
+        set CustomerName(value) {
+                this._CustomerName = value;
         }
 
         get CustomerAddress() {
