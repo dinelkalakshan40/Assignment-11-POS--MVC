@@ -157,6 +157,8 @@ $(document).ready(() => {
 
         if (orderQty > availableQty) {
             alert('Order quantity exceeds available quantity!');
+            $("#OrderQty").val(availableQty); // Reset to maximum available quantity
+
         }
     });
 
