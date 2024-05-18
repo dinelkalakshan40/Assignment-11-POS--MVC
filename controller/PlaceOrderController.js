@@ -6,6 +6,10 @@ let CustomerIndexElement;
 let ItemIndexElement;
 
 $(document).ready(()=>{
+
+    // Reset the order counter on page load
+    localStorage.setItem('orderCounter', 0);
+
     const today = new Date();
     const formattedDate = today.toISOString().split('T')[0];
     $("#orderDate").val(formattedDate);
@@ -146,6 +150,22 @@ $(document).ready(() => {
     if (defaultItemCode) {
         $("#item-select").val(defaultItemCode);
     }
+
+    $("#OrderQty").on('input', () => {
+        const orderQty = parseInt($("#OrderQty").val());
+        const availableQty = parseInt($("#itemQtyOrder").val());
+
+        if (orderQty > availableQty) {
+            alert('Order quantity exceeds available quantity!');
+        }
+    });
+
+    // Generate a new order ID when the "Place Order" button is clicked
+    $("#placeOrderBtn").click(() => {
+        const newOrderId = generateOrderId();
+        $("#orderId").val(newOrderId);
+        // Add your order placement logic here
+    });
 
 });
 
