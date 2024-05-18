@@ -33,6 +33,15 @@ const generateOrderId = () => {
     const orderId = `OID-${String(orderCounter).padStart(3, '0')}`;
     return orderId;
 };
+
+/*const calculateItemTotal = () => {
+    const itemPrice = parseFloat($("#itemPriceOrder").val()) || 0;
+    const orderQty = parseInt($("#OrderQty").val()) || 0;
+    const total = itemPrice * orderQty;
+    return total;
+};*/
+
+
 const calculateTotal = () => {
     const itemPrice = parseFloat($("#itemPriceOrder").val()) || 0;
     const orderQty = parseInt($("#OrderQty").val()) || 0;
@@ -176,19 +185,38 @@ $(document).ready(() => {
     });
 
     $("#AddCartBtn").click(() => {
-        //calculateTotal(); // Recalculate total when Add to Cart button is clicked
-        updateTotal();
+        const selectedItemCode = $("#itemCodeOrder").val();
+        const orderQty = parseInt($("#OrderQty").val());
+
+        const selectedItem = items.find(item => item.Code == selectedItemCode);
+        if (selectedItem) {
+            if (orderQty <= selectedItem.Qty) {
+                selectedItem.Qty -= orderQty; // Decrease QtyOnHand
+                updateItemDataInUI(selectedItemCode, selectedItem.Qty); // Update the UI
+                $("#itemQtyOrder").val(selectedItem.Qty); // Update the Qty field in the form
+                updateTotal(); // Update total when Add to Cart button is clicked
+            } else {
+                alert('Order quantity exceeds available quantity!');
+            }
+        }
     });
 
     // Generate a new order ID when the "Place Order" button is clicked
     $("#placeOrderBtn").click(() => {
         const newOrderId = generateOrderId();
         $("#orderId").val(newOrderId);
-        // Add your order placement logic here
+
     });
 
-    calculateTotal();
+  //  calculateTotal();
 
 });
+const updateItemDataInUI = (itemCode, newQty) => {
+    $(`#item-tbl-body tr:has(td[data-item-code="${itemCode}"]) .item-qty-value`).text(newQty);
+    const itemSelectOption = $(`#item-select option[value="${itemCode}"]`);
+    if (itemSelectOption.length > 0) {
+        itemSelectOption.text(`${itemCode} `);
+    }
+};
 
 
