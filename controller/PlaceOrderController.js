@@ -233,6 +233,9 @@ $(document).ready(() => {
     $("#placeOrderBtn").click(() => {
         const newOrderId = generateOrderId();
         $("#orderId").val(newOrderId);
+        clearAllInputs();
+        resetSelections();
+        clearTableRowData();
 
     });
 
@@ -246,6 +249,31 @@ const updateItemDataInUI = (itemCode, newQty) => {
         itemSelectOption.text(`${itemCode} `);
     }
 };
+
+const clearAllInputs = () => {
+    $("#customerIdOrder").val('');
+    $("#customerNameOrder").val('');
+    $("#customerAddressOrder").val('');
+    $("#customerSalaryOrder").val('');
+    $("#itemCodeOrder").val('');
+    $("#itemNameOrder").val('');
+    $("#itemPriceOrder").val('');
+    $("#itemQtyOrder").val('');
+    $("#OrderQty").val('');
+    $("#total").val('0.00');
+    $("#discount").val('0.00');
+    $("#net-total").val('0.00');
+};
+
+const resetSelections = () => {
+    $("#customer-select").val('');
+    $("#item-select").val('');
+};
+
+const clearTableRowData = () => {
+    $("#cart-tbl-body").empty();
+};
+
 const addItemToCart = (order) => {
     const cartRow = `
         <tr>
