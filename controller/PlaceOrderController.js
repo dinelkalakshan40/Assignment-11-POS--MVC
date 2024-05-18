@@ -5,6 +5,29 @@ import {PlaceOrderModel} from "/model/PlaceOrderModel.js";
 let CustomerIndexElement;
 let ItemIndexElement;
 
+$(document).ready(()=>{
+    const today = new Date();
+    const formattedDate = today.toISOString().split('T')[0];
+    $("#orderDate").val(formattedDate);
+
+    const initialOrderId = generateOrderId();
+    $("#orderId").val(initialOrderId);
+});
+
+const generateOrderId = () => {
+    let orderCounter = localStorage.getItem('orderCounter');
+    if (!orderCounter) {
+        orderCounter = 1;
+    } else {
+        orderCounter = parseInt(orderCounter) + 1;
+    }
+    localStorage.setItem('orderCounter', orderCounter);
+
+    const orderId = `OID-${String(orderCounter).padStart(3, '0')}`;
+    return orderId;
+};
+
+
 const loadCustomerData = () =>{
     $("#customer-tbl-body").empty();
     $("#customer-select").empty();
