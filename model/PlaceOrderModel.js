@@ -3,7 +3,7 @@ export class PlaceOrderModel{
                 this._oid=oid;
                 this._orderDate=orderDate;
                 this._CustomerName = CustomerName;
-                this._CustomerID = CustomerId;
+                this._CustomerId = CustomerId;
                 this._CustomerAddress = CustomerAddress;
                 this._CustomerSalary = CustomerSalary;
                 this._ItemCode=ItemCode;
@@ -11,7 +11,6 @@ export class PlaceOrderModel{
                 this._ItemPrice=ItemPrice;
                 this._ItemQty=ItemQty;
                 this._total=total;
-                this._CustomerId = CustomerId;
 
         }
 

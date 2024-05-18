@@ -56,6 +56,12 @@ const updateTotal=()=>{
     const updatedTotal = currentTotal + newItemTotal;
     $("#total").val(updatedTotal.toFixed(2));
 }
+const updateNetTotal = () => {
+    const total = parseFloat($("#total").val()) || 0;
+    const discount = parseFloat($("#discount").val()) || 0;
+    const netTotal = total - discount;
+    $("#net-total").val(netTotal.toFixed(2));
+};
 
 
 const loadCustomerData = () =>{
@@ -220,6 +226,9 @@ $(document).ready(() => {
         }
     });
 
+    // Event listener for discount input field
+    $("#discount").on('input', updateNetTotal);
+
     // Generate a new order ID when the "Place Order" button is clicked
     $("#placeOrderBtn").click(() => {
         const newOrderId = generateOrderId();
@@ -249,5 +258,7 @@ const addItemToCart = (order) => {
     `;
     $("#cart-tbl-body").append(cartRow);
 };
+$("#net-total").val('0.00');
+
 
 
