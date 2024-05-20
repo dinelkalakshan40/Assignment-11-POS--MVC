@@ -30,6 +30,14 @@
             }
 
         }
+        .table-custom th {
+            background-color: #2d8bbd; /* Change this color as needed */
+            /* Optional: Change text color for contrast */
+        }
+        input{
+            border-radius:7px ;
+        }
+
 
     </style>
 
@@ -165,7 +173,7 @@
                     </div>
                 </div>
                 <div class="table-responsive ">
-                    <table class="table table-hover">
+                    <table class="table table-hover table-custom">
                         <thead class="table-info">
                         <tr>
                             <th scope="col">ID</th>
@@ -187,7 +195,7 @@
             </section>
 
             <!--Manage Customer-->
-            <section class="col-lg-4 col-12 vh-75 bg-body" style="width: 530px">
+            <section class="col-lg-4 col-12 vh-75 bg-body" style="width: 530px ;">
                 <div class="text-center mt-2 p-1" style="background-color: #269145 ; color:white;">
                     <i class="fa-solid fa-user" style="color: #ffffff;"></i>
                     Manage Customer
@@ -258,7 +266,7 @@
                     </div>
                 </div>
                 <div class="table-responsive ">
-                    <table class="table table-hover">
+                    <table class="table table-hover table-custom">
                         <thead class="table-info">
                         <tr>
                             <th scope="col">Code</th>
@@ -450,7 +458,7 @@
             <!-- place Order table-->
             <div class="col-12 bg-body ">
                 <div class="table-responsive mt-2">
-                    <table class="table table-hover" id="cart-tbl">
+                    <table class="table table-hover table-custom" id="cart-tbl">
                         <thead class="table-info" >
                         <tr>
                             <th scope="col">Item Code</th>
@@ -476,11 +484,15 @@
 
 <!--Order history page-->
 <main id="order-history-page">
+
+    <h1 style="text-align: center">Order-Management</h1>
+
     <div class="container d-flex justify-content-center mt-5">
 
+
         <div class="table-responsive " style="width: 100%">
-            <table class="table table-hover" id="history-tbl" style="border: 2px solid #2d8bbd">
-                <thead class="table-info" id="orderHistoryHead" style="background-color: #26ec99">
+            <table class="table table-hover table-custom" id="history-tbl" style="border: 2px solid #2d8bbd">
+                <thead class="table-info" id="orderHistoryHead" >
                 <tr>
                     <th scope="col">Order-ID</th>
                     <th scope="col">Date</th>
