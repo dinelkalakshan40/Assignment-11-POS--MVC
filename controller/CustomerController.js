@@ -5,7 +5,7 @@ import {customers} from "/db/Db.js";
 
 var recordIndex;
 
-$(document).ready(() => {
+/*$(document).ready(() => {
 
     const storedCustomers = JSON.parse(localStorage.getItem('customer'));
     if (storedCustomers && Array.isArray(storedCustomers)) {
@@ -16,7 +16,7 @@ $(document).ready(() => {
     }
 
 
-});
+});*/
 function loadTable() {
 
     $("#customer-tbl-body").empty();
@@ -98,7 +98,7 @@ $("#customer-add-btn").on('click', () => {
 
     customers.push(customer);
 
-    localStorage.setItem('customer', JSON.stringify(customers));
+    /*localStorage.setItem('customer', JSON.stringify(customers));*/
     loadTable();
 
     console.log(customers);
@@ -178,7 +178,7 @@ $('#customer-update-btn').on('click',() => {
     customerObj.salary = customerSalary;
 
 
-    localStorage.setItem('customer', JSON.stringify(customers));
+    /*localStorage.setItem('customer', JSON.stringify(customers));*/
     loadTable();
 
     $('#customer-id').val('');
@@ -223,7 +223,7 @@ $('#customer-delete-btn').on('click', (event) => {
     if (recordIndex >= 0 && recordIndex < customers.length) {
         customers.splice(recordIndex, 1);
 
-        localStorage.setItem('customer', JSON.stringify(customers));
+       /* localStorage.setItem('customer', JSON.stringify(customers));*/
 
 
         loadTable(); // Reload the table data after deletion

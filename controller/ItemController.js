@@ -4,7 +4,7 @@ import {items} from "/db/Db.js";
 
 var recordIndex;
 
-$(document).ready(() => {
+/*$(document).ready(() => {
 
     const storedItems = JSON.parse(localStorage.getItem('item'));
     if (storedItems && Array.isArray(storedItems)) {
@@ -13,7 +13,7 @@ $(document).ready(() => {
         loadTable();
         // Load table with existing data
     }
-});
+});*/
 
 function loadTable() {
 
@@ -86,7 +86,7 @@ $('#item-add-btn').on('click',()=> {
         Qty:itemQty,
     }
     items.push(item);
-    localStorage.setItem('item',JSON.stringify(items));
+    /*localStorage.setItem('item',JSON.stringify(items));*/
     loadTable();
 
     $('#item-code').val('');
@@ -156,7 +156,7 @@ $('#item-update-btn').on('click',() => {
     itemObj.Qty = itemQty;
 
 
-    localStorage.setItem('item', JSON.stringify(items));
+    /*localStorage.setItem('item', JSON.stringify(items));*/
     loadTable();
 
     $('#item-code').val('');
@@ -194,7 +194,7 @@ $('#item-delete-btn').on('click', (event) => {
     if (recordIndex >= 0 && recordIndex < items.length) {
         items.splice(recordIndex, 1);
 
-        localStorage.setItem('item', JSON.stringify(items));
+       /* localStorage.setItem('item', JSON.stringify(items));*/
 
 
         loadTable(); // Reload the table data after deletion

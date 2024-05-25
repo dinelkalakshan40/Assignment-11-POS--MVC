@@ -308,8 +308,8 @@ const appendOrderHistory = (orderHistory) => {
             <td>${orderHistory.orderDate}</td>
             <td>${orderHistory.customerId}</td>
             <td>${orderHistory.customerName}</td>
-            <td>${orderHistory.itemCode}</td>
-            <td>${orderHistory.itemName}</td>
+            
+           
         </tr>
     `;
     $("#history-tbl-body").append(historyRow);
