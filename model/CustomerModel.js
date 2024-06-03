@@ -1,4 +1,4 @@
-export class CustomerModel{
+export class CustomerModel{ /* import in other modules*/
     constructor(id,name,address,salary) {
         this._id=id;
         this._name=name;

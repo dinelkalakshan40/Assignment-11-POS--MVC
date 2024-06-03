@@ -1,4 +1,4 @@
-import {CustomerModel} from"/model/CustomerModel.js";
+import {CustomerModel} from"/model/CustomerModel.js";  /*bring in functions, objects, or primitives from another module.*/
 import {customers} from "/db/Db.js";
 
 
@@ -17,11 +17,13 @@ var recordIndex;
 
 
 });*/
+
+/*displaying customer records in a table */
 function loadTable() {
 
-    $("#customer-tbl-body").empty();
+    $("#customer-tbl-body").empty(); /* remove all child elements*/
 
-    customers.map((item, index) => {
+    customers.map((item, index) => { /*current element being processed in the array (customers), */
         let record = `<tr>
                 <td class="customer-id-value">${item.id}</td>
                 <td class="customer-name-value">${item.name}</td>
@@ -62,17 +64,17 @@ $('#customer-cancel-btn').click(() => {
 
 $("#customer-add-btn").on('click', () => {
 
-    var customerId = $('#customer-id').val();
+    var customerId = $('#customer-id').val(); /* get the current value of the  element*/
     var customerName = $('#customer-name').val();
     var customerAddress = $('#customer-address').val();
     var customerSalary = $('#customer-salary').val();
 
-    if (!/^CID-00\d*$/.test(customerId)) {
+    if (!/^CID-00\d*$/.test(customerId)) { /* test:match in a string*/
         alert("customer id Invalid");
       //  $('#customerIdAlert').html("Please enter a valid customer ID in the CID-001 format (e.g., CID-01)."); // Show alert under the input field
         return;
     }
-    if (customerName.length < 4) {
+    if (customerName.length < 4) { /*check string of customerName*/
         alert("Customer Name Invalid.");
         return;
     }
@@ -89,7 +91,7 @@ $("#customer-add-btn").on('click', () => {
 
     let customerModel =new  CustomerModel(customerId,customerName,customerAddress,customerSalary);
 
-    let customer = {
+    let customer = { /*Create a Customer Object*/
         id: customerId,
         name: customerName,
         address: customerAddress,
