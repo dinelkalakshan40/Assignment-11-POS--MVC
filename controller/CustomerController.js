@@ -5,19 +5,6 @@ import {customers} from "/db/Db.js";
 
 var recordIndex;
 
-/*$(document).ready(() => {
-
-    const storedCustomers = JSON.parse(localStorage.getItem('customer'));
-    if (storedCustomers && Array.isArray(storedCustomers)) {
-        // Update the customers array with local storage data
-        customers.push(...storedCustomers);
-        loadTable();
-        // Load table with existing data
-    }
-
-
-});*/
-
 /*displaying customer records in a table */
 function loadTable() {
 
@@ -88,7 +75,6 @@ $("#customer-add-btn").on('click', () => {
     }
 
 
-
     let customerModel =new  CustomerModel(customerId,customerName,customerAddress,customerSalary);
 
     let customer = { /*Create a Customer Object*/
@@ -100,7 +86,6 @@ $("#customer-add-btn").on('click', () => {
 
     customers.push(customer);
 
-    /*localStorage.setItem('customer', JSON.stringify(customers));*/
     loadTable();
 
     console.log(customers);
@@ -111,8 +96,6 @@ $("#customer-add-btn").on('click', () => {
     $('#customer-salary').val('');
 
     alert("Customer Saved");
-
-
 });
 
 $("#customer-id").focus(() => {
@@ -151,8 +134,6 @@ $('#customer-update-btn').on('click',() => {
     var customerAddress = $('#customer-address').val();
     var customerSalary = $('#customer-salary').val()
 
-
-
     let customerObj = customers[recordIndex];
 
     customerObj.id = customerId;
@@ -160,8 +141,6 @@ $('#customer-update-btn').on('click',() => {
     customerObj.address = customerAddress;
     customerObj.salary = customerSalary;
 
-
-    /*localStorage.setItem('customer', JSON.stringify(customers));*/
     loadTable();
 
     $('#customer-id').val('');
@@ -170,7 +149,6 @@ $('#customer-update-btn').on('click',() => {
     $('#customer-salary').val('');
 
     alert("Customer updated");
-
 
 });
 
@@ -195,7 +173,6 @@ $('#customer-tbl-body').on('click','tr',function () {
     $('#customer-address').val(address);
     $('#customer-salary').val(salary);
 
-
 });
 
 
@@ -205,9 +182,6 @@ $('#customer-delete-btn').on('click', (event) => {
 
     if (recordIndex >= 0 && recordIndex < customers.length) {
         customers.splice(recordIndex, 1);
-
-       /* localStorage.setItem('customer', JSON.stringify(customers));*/
-
 
         loadTable(); // Reload the table data after deletion
 

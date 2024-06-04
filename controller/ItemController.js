@@ -4,17 +4,6 @@ import {items} from "/db/Db.js";
 
 var recordIndex;
 
-/*$(document).ready(() => {
-
-    const storedItems = JSON.parse(localStorage.getItem('item'));
-    if (storedItems && Array.isArray(storedItems)) {
-        // Update the items array with local storage data
-        items.push(...storedItems);
-        loadTable();
-        // Load table with existing data
-    }
-});*/
-
 function loadTable() {
 
     $("#item-tbl-body").empty();
@@ -86,7 +75,6 @@ $('#item-add-btn').on('click',()=> {
         Qty:itemQty,
     }
     items.push(item);
-    /*localStorage.setItem('item',JSON.stringify(items));*/
     loadTable();
 
     $('#item-code').val('');
@@ -130,8 +118,6 @@ $('#item-update-btn').on('click',() => {
     var itemPrice = $('#item-price').val();
     var itemQty = $('#item-qty').val()
 
-
-
     let itemObj = items[recordIndex];
 
     itemObj.Code = itemId;
@@ -139,8 +125,6 @@ $('#item-update-btn').on('click',() => {
     itemObj.Price = itemPrice;
     itemObj.Qty = itemQty;
 
-
-    /*localStorage.setItem('item', JSON.stringify(items));*/
     loadTable();
 
     $('#item-code').val('');
@@ -149,8 +133,6 @@ $('#item-update-btn').on('click',() => {
     $('#item-qty').val('');
 
     alert("Item updated");
-
-
 });
 
 $('#item-tbl-body').on('click','tr',function () {
@@ -177,9 +159,6 @@ $('#item-delete-btn').on('click', (event) => {
 
     if (recordIndex >= 0 && recordIndex < items.length) {
         items.splice(recordIndex, 1);
-
-       /* localStorage.setItem('item', JSON.stringify(items));*/
-
 
         loadTable(); // Reload the table data after deletion
 
