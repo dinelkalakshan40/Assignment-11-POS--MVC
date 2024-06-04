@@ -74,11 +74,11 @@ $("#customer-add-btn").on('click', () => {
       //  $('#customerIdAlert').html("Please enter a valid customer ID in the CID-001 format (e.g., CID-01)."); // Show alert under the input field
         return;
     }
-    if (customerName.length < 4) { /*check string of customerName*/
+    if (!/^[a-zA-Z]{4,}$/.test(customerName)) { /*check string of customerName*/
         alert("Customer Name Invalid.");
         return;
     }
-    if (customerAddress.length < 5){
+    if (!/^No:[a-zA-Z]{4,}$/.test(customerAddress)){
         alert("Customer Address Invalid");
         return;
     }
