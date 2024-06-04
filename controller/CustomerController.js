@@ -118,49 +118,30 @@ $("#customer-add-btn").on('click', () => {
 $("#customer-id").focus(() => {
     const customerId = $('#customer-id').val();
 
-    // Validate customer ID using CID-001 pattern
-    if (!/^CID-\d{6}$/.test(customerId)) {
         $('#customerIdAlert').html("Please enter a valid ID in the format  CID-00").css("color", "red"); // Show alert in red color under the input field
-    } else {
-        $('#customerIdAlert').html("").css("color", ""); // Clear the alert message if the ID format is valid
-    }
+
 });
 
 $("#customer-name").focus(() => {
     const customerName = $('#customer-name').val();
 
-
-    if (customerName.length < 4) {
         $('#customerNameAlert').html("Name should have at least 4 characters").css("color", "red");
-    } else {
-        $('#customerNameAlert').html("").css("color", "");
-    }
+
 });
 
 $("#customer-address").focus(() => {
     const customerAddress = $('#customer-address').val();
 
+        $('#customerAddressAlert').html("Address start on No:").css("color", "red");
 
-    if (customerAddress.length < 5) {
-        $('#customerAddressAlert').html("Address should have at least 5 characters").css("color", "red");
-    } else {
-        $('#customerAddressAlert').html("").css("color", "");
-    }
 });
 
 $("#customer-salary").focus(() => {
     const customerSalary = $('#customer-salary').val();
 
-
-    if (!/^\d{4,5}\.00$/.test(customerSalary))  {
         $('#customerSalaryAlert').html("Customer Salary format of 4 or 5 digits followed by '.00'.").css("color", "red");
-    } else {
-        $('#customerSalaryAlert').html("").css("color", "");
-    }
+
 });
-
-
-
 
 
 
@@ -242,12 +223,10 @@ $('#customer-delete-btn').on('click', (event) => {
 
 
 /*clear action*/
-document.getElementById('customer-clear-btn').addEventListener('click',function (){
-
-    document.getElementById("customer-id").value='';
-    document.getElementById("customer-name").value='';
-    document.getElementById("customer-address").value='';
-    document.getElementById("customer-salary").value='';
+$('#customer-clear-btn').click(function() {
+    $('#customer-id').val('');
+    $('#customer-name').val('');
+    $('#customer-address').val('');
+    $('#customer-salary').val('');
 });
-
 

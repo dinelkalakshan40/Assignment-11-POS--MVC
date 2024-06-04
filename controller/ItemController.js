@@ -64,7 +64,7 @@ $('#item-add-btn').on('click',()=> {
         alert("Item code Invalid");
         return;
     }
-    if (itemName.length < 4){
+    if (!/^[a-zA-Z]{4,}$/.test(itemName)){
         alert("Item Name Invalid");
         return;
     }
@@ -99,45 +99,29 @@ $('#item-add-btn').on('click',()=> {
 $("#item-code").focus(() => {
     const itemCode = $('#item-code').val();
 
-    // Validate customer ID using CID-001 pattern
-    if (!/^C-00\d*$/.test(itemCode)) {
         $('#itemCodeAlert').html("Please enter a valid Code in the format  C-00").css("color", "red"); // Show alert in red color under the input field
-    } else {
-        $('#itemCodeAlert').html("").css("color", ""); // Clear the alert message if the ID format is valid
-    }
+
 });
 
 $("#item-name").focus(() => {
     const itemName = $('#item-name').val();
 
-
-    if (itemName.length < 4) {
         $('#itemNameAlert').html("Item-Name should have at least 4 characters").css("color", "red");
-    } else {
-        $('#itemNameAlert').html("").css("color", "");
-    }
+
 });
 
 $("#item-price").focus(() => {
     const itemPrice = $('#item-price').val();
 
-
-    if (!/^\d{1,5}\.00$/.test(itemPrice)) {
         $('#itemPriceAlert').html("item Price end .00").css("color", "red");
-    } else {
-        $('#itemNameAlert').html("").css("color", "");
-    }
+
 });
 
 $("#item-qty").focus(() => {
     const itemQty = $('#item-qty').val();
 
-
-    if (!/^\d{1,4}$/.test(itemQty)) {
         $('#itemQtyAlert').html("item Qty should between 1-4 ").css("color", "red");
-    } else {
-        $('#itemQtyAlert').html("").css("color", "");
-    }
+
 });
 
 $('#item-update-btn').on('click',() => {
@@ -210,10 +194,9 @@ $('#item-delete-btn').on('click', (event) => {
     }
 });
 
-document.getElementById('item-clear-btn').addEventListener('click',function (){
-
-    document.getElementById("item-code").value='';
-    document.getElementById("item-name").value='';
-    document.getElementById("item-price").value='';
-    document.getElementById("item-qty").value='';
+$("#item-clear-btn").click(function() {
+    $("#item-code").val("");
+    $("#item-name").val("");
+    $("#item-price").val("");
+    $("#item-qty").val("");
 });
